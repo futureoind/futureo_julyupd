@@ -1,5 +1,21 @@
 <!DOCTYPE html>
 <html>
+  <style>
+  .navbar-scroll-hidden .navbar-caption,
+  .navbar-scroll-hidden .nav-link,
+  .navbar-scroll-hidden .hamburger {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .navbar-scroll-visible .navbar-caption,
+  .navbar-scroll-visible .nav-link,
+  .navbar-scroll-visible .hamburger {
+    opacity: 1;
+    pointer-events: auto;
+  }
+</style>
 <head>
   <!-- Site made with Mobirise Website Builder v6.0.6, https://mobirise.com -->
   <meta charset="UTF-8">
@@ -103,5 +119,21 @@
   </a>
 </div>
 <input name="animation" type="hidden">
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const navbar = document.querySelector(".navbar");
+    navbar.classList.add("navbar-scroll-hidden");
+
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 50) {
+        navbar.classList.remove("navbar-scroll-hidden");
+        navbar.classList.add("navbar-scroll-visible");
+      } else {
+        navbar.classList.add("navbar-scroll-hidden");
+        navbar.classList.remove("navbar-scroll-visible");
+      }
+    });
+  });
+</script>
 </body>
 </html>
